@@ -6,9 +6,8 @@ import {InputFilter} from "./InputFilter/InputFilter";
 import {Container,Title} from "./App.styled";
 
 export const App = () =>{
-  const [sContacts, setSContacts] = useState(JSON.parse(localStorage.getItem("contact"))|| []) 
+  const [sContacts, setSContacts] =  useState(() =>JSON.parse(localStorage.getItem("contact"))|| []);
   const [filter, setFilter] = useState("");
-  
  const deleteFromContacts = (contactToDelete) =>{
     const deletedList = sContacts.filter(contact => contact.id !== contactToDelete.id);
     setSContacts(deletedList);
